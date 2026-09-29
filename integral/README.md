@@ -16,71 +16,133 @@ Esta guía constituye la primera entrega de una serie de cuatro partes de Cálcu
 
 ## 1. La Integral Indefinida (Antiderivada)
 
-De acuerdo con el enfoque formal de Purcell, el proceso de recuperar la función original a partir de su ritmo de cambio instantáneo se define como la antiderivación o integración indefinida.
+### 1.1 Definición
 
-### Regla Teórica 1.1 - Definición de Antiderivada y Propiedades
+De acuerdo con el enfoque formal de Purcell, el proceso de recuperar la función original a partir de su ritmo de cambio instantáneo se define como la **antiderivación** o **integración indefinida**.
 
-Decimos que F es una antiderivada de f en un intervalo I si F'(x) = f(x) para todo x en I. Al conjunto de todas las antiderivadas de f se le denomina integral indefinida de f, denotada por:
+Decimos que F es una **antiderivada** de f en un intervalo I si F'(x) = f(x) para todo x en I. Al conjunto de todas las antiderivadas de f se le denomina **integral indefinida** de f, denotada por:
 
 ```
 ∫ f(x) dx = F(x) + C
 ```
 
-donde C representa la constante de integración real arbitraria. Se establecen las propiedades de linealidad:
+donde C representa la **constante de integración** real arbitraria.
 
-1. **Múltiplo constante:** ∫ kf(x) dx = k ∫ f(x) dx, para cualquier constante real k.
-2. **Suma y diferencia:** ∫ [f(x) ± g(x)] dx = ∫ f(x) dx ± ∫ g(x) dx.
+### 1.2 Propiedades de Linealidad
+
+| Propiedad | Fórmula |
+|-----------|---------|
+| **Múltiplo constante** | ∫ kf(x) dx = k ∫ f(x) dx, para cualquier constante real k |
+| **Suma y diferencia** | ∫ [f(x) ± g(x)] dx = ∫ f(x) dx ± ∫ g(x) dx |
 
 ---
 
 ## 2. Notación Sigma y Leyes de Sumación
 
-La aproximación geométrica del área bajo una curva requiere compactar la suma de múltiples rectángulos infinitamente delgados empleando la notación sigma y sus respectivas propiedades algebraicas.
+La aproximación geométrica del área bajo una curva requiere compactar la suma de múltiples rectángulos infinitamente delgados empleando la **notación sigma** y sus respectivas propiedades algebraicas.
 
-### Regla Teórica 2.1 - Propiedades de Sumación y Fórmulas Especiales
+### 2.1 Definición de Notación Sigma
 
-La suma de n términos se representa mediante el operador sigma como Σ aᵢ. Se establecen las siguientes fórmulas de sumación especial de Purcell:
+La suma de n términos se representa mediante el operador sigma:
 
-1. **Suma de una constante:** Σ c = nc
-2. **Suma de los primeros n enteros:** Σ i = n(n+1)/2
-3. **Suma de los primeros n cuadrados:** Σ i² = n(n+1)(2n+1)/6
+```
+n
+Σ aᵢ = a₁ + a₂ + ⋯ + aₙ
+i=1
+```
+
+### 2.2 Fórmulas de Sumación Especiales de Purcell
+
+| Fórmula | Expresión |
+|---------|-----------|
+| **Suma de una constante** | Σ c = nc |
+| **Suma de los primeros n enteros** | Σ i = n(n+1)/2 |
+| **Suma de los primeros n cuadrados** | Σ i² = n(n+1)(2n+1)/6 |
 
 ---
 
 ## 3. La Integral Definida e Interpretación Gráfica
 
-La integral definida representa la acumulación de un cambio continuo. Geométricamente, si la función f es positiva en un intervalo cerrado [a, b], la integral definida equivale de forma exacta al área bajo la curva.
+### 3.1 Definición Formal
 
-### Regla Teórica 3.1 - Definición Formal de la Integral Definida
+La **integral definida** representa la acumulación de un cambio continuo. Geométricamente, si la función f es positiva en un intervalo cerrado [a, b], la integral definida equivale de forma exacta al área bajo la curva.
 
 Sea f una función definida en el intervalo cerrado [a, b]. Si la norma de la partición P tiende a cero (||P|| → 0), la integral definida de f de a a b viene dada por:
 
 ```
+b
 ∫ f(x) dx = lim Σ f(xᵢ)Δx
-           ||P||→0
+a         ||P||→0
 ```
 
-donde Δx = (b-a)/n representa el ancho de cada subintervalo homogéneo y xᵢ = a + iΔx corresponde al punto de aproximación del extremo derecho.
+donde:
+- Δx = (b-a)/n representa el ancho de cada subintervalo homogéneo
+- xᵢ = a + iΔx corresponde al punto de aproximación del extremo derecho
+
+### 3.2 Representación Gráfica del Área y las Sumas de Riemann
+
+```
+    y
+    │
+    │    ┌───┐
+    │    │   │┌──┐
+    │    │   ││  │┌─┐
+    │    │   ││  ││ │  ← Rectángulos de Riemann
+    │    │   ││  ││ │    (extremo derecho)
+    │   ╱│   ││  ││ │
+    │  ╱ │   ││  ││ │
+    │ ╱  │   ││  ││ │
+    │╱   │   ││  ││ │
+    └────┴───┴┴──┴┴─┴────→ x
+    a                   b
+
+    Área bajo la curva = lim Σ f(xᵢ)Δx
+                        n→∞
+```
 
 ---
 
 ## 4. El Teorema Fundamental del Cálculo
 
-El Teorema Fundamental del Cálculo unifica los procesos analíticos de derivación e integración, demostrando que son operaciones inversas.
+El **Teorema Fundamental del Cálculo** unifica los procesos analíticos de derivación e integración, demostrando que son operaciones inversas.
 
-### Regla Teórica 4.1 - Ambas Partes del Teorema Fundamental
+### 4.1 Primer Teorema Fundamental del Cálculo
 
-- **Primer Teorema Fundamental del Cálculo:** Sea f una función continua en el intervalo cerrado [a, b] y sea x cualquier punto en (a, b). Si definimos la función de acumulación G(x) = ∫ f(t) dt, entonces:
+Sea f una función continua en el intervalo cerrado [a, b] y sea x cualquier punto en (a, b). Si definimos la función de acumulación:
+
+```
+        x
+G(x) = ∫ f(t) dt
+        a
+```
+
+entonces:
 
 ```
 G'(x) = d/dx ∫ f(t) dt = f(x)
+              a
 ```
 
-- **Segundo Teorema Fundamental del Cálculo:** Sea f continua en [a, b]. Si F es cualquier antiderivada de f en dicho intervalo (es decir, F'(x) = f(x)), entonces:
+**Generalización (Regla de Leibniz):** Si el extremo superior es una función diferenciable u(x):
 
 ```
+d/dx ∫ f(t) dt = f(u(x)) · u'(x)
+      a
+```
+
+### 4.2 Segundo Teorema Fundamental del Cálculo
+
+Sea f continua en [a, b]. Si F es cualquier antiderivada de f en dicho intervalo (es decir, F'(x) = f(x)), entonces:
+
+```
+b
 ∫ f(x) dx = F(b) - F(a)
+a
 ```
+
+### 4.3 Interpretación
+
+El Segundo Teorema Fundamental del Cálculo nos permite calcular integrales definidas sin necesidad de calcular límites de sumas de Riemann. Solo necesitamos encontrar una antiderivada y evaluarla en los extremos.
 
 ---
 
@@ -88,36 +150,44 @@ G'(x) = d/dx ∫ f(t) dt = f(x)
 
 Para agilizar el proceso analítico de integración de acuerdo con el texto de Purcell, es fundamental disponer de una tabla estructurada de las antiderivadas algebraicas, trascendentes e inversas más importantes del cálculo.
 
-### Fórmulas Fundamentales de Integración Inmediata
+### 5.1 Fórmulas Fundamentales de Integración Inmediata
 
 | Categoría | Estructura del Integrando | Antiderivada General |
 |-----------|---------------------------|----------------------|
-| Algebraicas | ∫ xⁿ dx (n ≠ -1) | xⁿ⁺¹/(n+1) + C |
+| **Algebraicas** | ∫ xⁿ dx (n ≠ -1) | xⁿ⁺¹/(n+1) + C |
 | | ∫ 1/x dx | ln |x| + C |
-| Exponenciales | ∫ eˣ dx | eˣ + C |
+| **Exponenciales** | ∫ eˣ dx | eˣ + C |
 | | ∫ aˣ dx (a > 0, a ≠ 1) | aˣ/ln(a) + C |
-| Trigonométricas | ∫ sin(x) dx | -cos(x) + C |
+| **Trigonométricas** | ∫ sin(x) dx | -cos(x) + C |
 | | ∫ cos(x) dx | sin(x) + C |
 | | ∫ sec²(x) dx | tan(x) + C |
 | | ∫ csc²(x) dx | -cot(x) + C |
 | | ∫ sec(x)tan(x) dx | sec(x) + C |
 | | ∫ csc(x)cot(x) dx | -csc(x) + C |
-| Formas Racionales | ∫ 1/(x²+a²) dx | (1/a)arctan(x/a) + C |
+| **Formas Racionales** | ∫ 1/(x²+a²) dx | (1/a)arctan(x/a) + C |
 | | ∫ 1/√(a²-x²) dx | arcsin(x/a) + C |
 
 ---
 
 ## 6. Teorema de Sustitución (Cambio de Variable)
 
-El Teorema de Sustitución representa el proceso analítico inverso de la regla de la cadena para funciones compuestas.
+El **Teorema de Sustitución** representa el proceso analítico inverso de la regla de la cadena para funciones compuestas.
 
-### Regla Teórica 6.1 - Regla de Sustitución para Integrales Indefinidas
+### 6.1 Regla de Sustitución para Integrales Indefinidas
 
 Sea g una función diferenciable en un intervalo I y sea f continua en el rango de g. Si definimos el cambio de variable u = g(x), su diferencial correspondiente es du = g'(x) dx. Entonces:
 
 ```
 ∫ f(g(x))g'(x) dx = ∫ f(u) du
 ```
+
+### 6.2 Pasos para Aplicar la Sustitución
+
+1. **Identificar** la función interna u = g(x)
+2. **Calcular** el diferencial du = g'(x) dx
+3. **Sustituir** u y du en la integral original
+4. **Integrar** respecto a la nueva variable u
+5. **Regresar** a la variable original x
 
 ---
 

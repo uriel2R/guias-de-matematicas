@@ -16,9 +16,11 @@ Esta guía proporciona un compendio teórico y práctico de los métodos analít
 
 ## 1. Variables Separables
 
-Una ecuación diferencial de primer orden es separable si puede expresarse en una forma donde cada variable y su diferencial respectivo puedan agruparse de manera independiente en lados opuestos de la igualdad.
+### 1.1 Definición
 
-### Regla Teórica 1.1 - Definición y Regla de Solución
+Una ecuación diferencial de primer orden es **separable** si puede expresarse en una forma donde cada variable y su diferencial respectivo puedan agruparse de manera independiente en lados opuestos de la igualdad.
+
+### 1.2 Forma General
 
 Una ecuación diferencial de primer orden de la forma:
 
@@ -26,11 +28,13 @@ Una ecuación diferencial de primer orden de la forma:
 dy/dx = g(x)h(y)
 ```
 
-es de variables separables. Al asumir que h(y) ≠ 0, puede reescribirse mediante la separación algebraica de sus términos diferenciales como:
+es de variables separable. Al asumir que h(y) ≠ 0, puede reescribirse mediante la separación algebraica de sus términos diferenciales como:
 
 ```
 (1/h(y)) dy = g(x)dx
 ```
+
+### 1.3 Solución General
 
 La solución general se obtiene mediante la integración directa de ambos miembros de la ecuación:
 
@@ -44,9 +48,11 @@ donde C representa una constante de integración arbitraria.
 
 ## 2. Ecuaciones Diferenciales Lineales
 
-Las ecuaciones diferenciales de primer orden lineales se caracterizan porque la variable dependiente y y su derivada y' aparecen únicamente elevadas a la primera potencia y no forman parte de argumentos de funciones no lineales.
+### 2.1 Definición
 
-### Regla Teórica 2.1 - Estructura Estándar y Factor Integrante
+Las ecuaciones diferenciales de primer orden **lineales** se caracterizan porque la variable dependiente y y su derivada y' aparecen únicamente elevadas a la primera potencia y no forman parte de argumentos de funciones no lineales.
+
+### 2.2 Forma Estándar
 
 La forma estándar de una ecuación diferencial lineal de primer orden es:
 
@@ -54,25 +60,37 @@ La forma estándar de una ecuación diferencial lineal de primer orden es:
 dy/dx + P(x)y = f(x)
 ```
 
-donde P(x) y f(x) son funciones continuas en un intervalo común I. El método analítico clásico de Zill requiere calcular un factor integrante μ(x) definido como:
+donde P(x) y f(x) son funciones continuas en un intervalo común I.
+
+### 2.3 Factor Integrante
+
+El método analítico clásico de Zill requiere calcular un **factor integrante** μ(x) definido como:
 
 ```
 μ(x) = e^(∫ P(x)dx)
 ```
 
-Al multiplicar la forma estándar por μ(x), el miembro izquierdo se convierte en la derivada del producto del factor por la variable dependiente, lo que permite integrar directamente:
+Al multiplicar la forma estándar por μ(x), el miembro izquierdo se convierte en la derivada del producto del factor por la variable dependiente:
 
 ```
-d/dx [μ(x)y] = μ(x)f(x)  ⇒  μ(x)y = ∫ μ(x)f(x)dx + C
+d/dx [μ(x)y] = μ(x)f(x)
+```
+
+lo que permite integrar directamente:
+
+```
+μ(x)y = ∫ μ(x)f(x)dx + C
 ```
 
 ---
 
 ## 3. Ecuaciones Exactas
 
-Las ecuaciones exactas se basan en el concepto de la diferencial total de una función de varias variables.
+### 3.1 Definición
 
-### Regla Teórica 3.1 - Condición de Exactitud
+Las ecuaciones exactas se basan en el concepto de la **diferencial total** de una función de varias variables.
+
+### 3.2 Forma Diferencial
 
 Una ecuación diferencial escrita en su forma diferencial:
 
@@ -80,11 +98,15 @@ Una ecuación diferencial escrita en su forma diferencial:
 M(x, y)dx + N(x, y)dy = 0
 ```
 
-es una ecuación exacta en una región rectangular del plano si las funciones M y N son continuas y tienen primeras derivadas parciales continuas que cumplen la condición matemática de simetría:
+### 3.3 Condición de Exactitud
+
+Es una ecuación exacta en una región rectangular del plano si las funciones M y N son continuas y tienen primeras derivadas parciales continuas que cumplen la condición matemática de simetría:
 
 ```
 ∂M/∂y = ∂N/∂x
 ```
+
+### 3.4 Solución General
 
 Si se cumple esta condición, existe una función f(x, y) tal que su diferencial total es df = M dx + N dy. La solución general implícita de la EDO viene dada por la relación:
 
@@ -98,43 +120,49 @@ f(x, y) = C
 
 Cuando una ecuación diferencial escrita de la forma M(x, y)dx + N(x, y)dy = 0 no es exacta (∂M/∂y ≠ ∂N/∂x), en ocasiones es posible transformarla multiplicándola por un factor integrante μ adecuado.
 
-### Regla Teórica 4.1 - Determinación del Factor Integrante para Exactas
+### 4.1 Determinación del Factor Integrante
 
 Para hallar un factor integrante μ, se analizan dos casos según la dependencia de las variables de las funciones resultantes:
 
-- **Caso I: Factor dependiente solo de x.** Si la expresión (∂M/∂y - ∂N/∂x)/N = P(x) es una función exclusiva de la variable x, entonces el factor integrante es: μ(x) = e^(∫ P(x)dx)
-
-- **Caso II: Factor dependiente solo de y.** Si la expresión (∂N/∂x - ∂M/∂y)/M = Q(y) es una función exclusiva de la variable y, entonces el factor integrante es: μ(y) = e^(∫ Q(y)dy)
+| Caso | Condición | Factor Integrante |
+|------|-----------|-------------------|
+| **Caso I** | (∂M/∂y - ∂N/∂x)/N = P(x) es función solo de x | μ(x) = e^(∫ P(x)dx) |
+| **Caso II** | (∂N/∂x - ∂M/∂y)/M = Q(y) es función solo de y | μ(y) = e^(∫ Q(y)dy) |
 
 ---
 
 ## 5. Ecuaciones Homogéneas
 
-Las ecuaciones homogéneas se caracterizan porque sus funciones coeficientes diferenciales poseen propiedades de simetría de escala de un mismo grado algebraico.
+### 5.1 Definición de Homogeneidad
 
-### Regla Teórica 5.1 - Definición de Homogeneidad y Sustitución
-
-Una función f(x, y) es homogénea de grado n si cumple con la relación:
+Una función f(x, y) es **homogénea de grado n** si cumple con la relación:
 
 ```
 f(tx, ty) = tⁿf(x, y)
 ```
 
-Una ecuación diferencial M(x, y)dx + N(x, y)dy = 0 es homogénea si tanto M como N son funciones homogéneas del mismo grado n. Toda ecuación homogénea puede convertirse en separable mediante cualquiera de las siguientes sustituciones algebraicas:
+### 5.2 Ecuación Homogénea
 
-```
-y = ux  ⇒  dy = udx + xdu
-o bien
-x = vy  ⇒  dx = vdy + ydv
-```
+Una ecuación diferencial M(x, y)dx + N(x, y)dy = 0 es homogénea si tanto M como N son funciones homogéneas del mismo grado n.
+
+### 5.3 Sustituciones
+
+Toda ecuación homogénea puede convertirse en separable mediante cualquiera de las siguientes sustituciones algebraicas:
+
+| Sustitución | Diferencial |
+|-------------|-------------|
+| y = ux | dy = udx + xdu |
+| x = vy | dx = vdy + ydv |
 
 ---
 
 ## 6. Ecuaciones de Bernoulli
 
-La ecuación de Bernoulli es una extensión de las ecuaciones lineales que incorpora un término de potencia no lineal en la variable dependiente.
+### 6.1 Definición
 
-### Regla Teórica 6.1 - Definición de Bernoulli y Transformación
+La ecuación de **Bernoulli** es una extensión de las ecuaciones lineales que incorpora un término de potencia no lineal en la variable dependiente.
+
+### 6.2 Forma General
 
 La ecuación diferencial de primer orden de Bernoulli tiene la forma matemática:
 
@@ -144,8 +172,17 @@ dy/dx + P(x)y = f(x)yⁿ
 
 donde n es cualquier número real.
 
-- Si n = 0 o n = 1, la ecuación es lineal y se resuelve mediante factor integrante directamente.
-- Para cualquier otro valor de n ≠ 0, 1, la ecuación se reduce a una forma lineal para la variable dependiente u mediante la sustitución no lineal definida como:
+### 6.3 Casos Especiales
+
+| Valor de n | Tipo de ecuación | Método |
+|------------|------------------|--------|
+| n = 0 | Lineal | Factor integrante |
+| n = 1 | Lineal | Factor integrante |
+| n ≠ 0, 1 | Bernoulli | Sustitución u = y¹⁻ⁿ |
+
+### 6.4 Transformación
+
+Para n ≠ 0, 1, la ecuación se reduce a una forma lineal para la variable dependiente u mediante la sustitución no lineal:
 
 ```
 u = y¹⁻ⁿ

@@ -11,6 +11,10 @@ Colección de guías de repaso para cursos de matemáticas, basadas en los texto
 | [Cálculo Integral](./integral/) | Fundamentos de la integral y métodos de sustitución | Purcell (9.ª ed.) |
 | [Ecuaciones Diferenciales](./ecuaciones-diferenciales/) | Métodos analíticos para ecuaciones de primer orden | Zill (3.ª ed.) |
 
+## PDFs Originales
+
+Los archivos PDF originales de las guías están disponibles en la carpeta [`pdfs/`](./pdfs/).
+
 ## Autor
 
 **Mario Uriel Juárez Rosales**

@@ -16,7 +16,9 @@ Este documento presenta una síntesis de los conceptos y métodos fundamentales 
 
 ## 1. Sistemas de Ecuaciones Lineales
 
-Un sistema de m ecuaciones lineales con n variables tiene la forma general:
+### 1.1 Definición
+
+Un **sistema de m ecuaciones lineales con n variables** tiene la forma general:
 
 ```
 a₁₁x₁ + a₁₂x₂ + ⋯ + a₁ₙxₙ = b₁
@@ -25,17 +27,40 @@ a₂₁x₁ + a₂₂x₂ + ⋯ + a₂ₙxₙ = b₂
 aₘ₁x₁ + aₘ₂x₂ + ⋯ + aₘₙxₙ = bₘ
 ```
 
-donde aᵢⱼ representan los coeficientes reales, xⱼ las incógnitas y bᵢ los términos constantes. Este sistema se puede expresar de forma matricial compacta como:
+donde:
+- **aᵢⱼ** son los coeficientes reales (i = 1,...,m; j = 1,...,n)
+- **xⱼ** son las incógnitas o variables
+- **bᵢ** son los términos constantes
+
+### 1.2 Forma Matricial
+
+Este sistema se puede expresar de forma matricial compacta como:
 
 **Ax = b**
 
-donde A ∈ ℝᵐˣⁿ es la matriz de coeficientes, x ∈ ℝⁿ es el vector de variables y b ∈ ℝᵐ es el vector de constantes.
+donde:
+
+```
+     ┌ a₁₁ a₁₂ ⋯ a₁ₙ ┐       ┌ x₁ ┐       ┌ b₁ ┐
+     │ a₂₁ a₂₂ ⋯ a₂ₙ │       │ x₂ │       │ b₂ │
+A =  │  ⋮   ⋮  ⋱  ⋮  │,  x = │ ⋮  │,  b = │ ⋮  │
+     │ aₘ₁ aₘ₂ ⋯ aₘₙ │       │ xₙ │       │ bₘ │
+     └              ┘       └    ┘       └    ┘
+```
+
+- **A** ∈ ℝᵐˣⁿ es la **matriz de coeficientes**
+- **x** ∈ ℝⁿ es el **vector de variables**
+- **b** ∈ ℝᵐ es el **vector de constantes**
+
+### 1.3 Clasificación de Sistemas
 
 De acuerdo con el texto de Larson, un sistema de ecuaciones lineales puede presentar tres escenarios posibles para su conjunto solución:
 
-- Una solución única (sistema consistente determinado).
-- Infinitas soluciones (sistema consistente indeterminado).
-- Sin solución (sistema inconsistente).
+| Tipo | Descripción | Condición |
+|------|-------------|-----------|
+| **Consistente determinado** | Una solución única | rango(A) = rango([A|b]) = n |
+| **Consistente indeterminado** | Infinitas soluciones | rango(A) = rango([A|b]) < n |
+| **Inconsistente** | Sin solución | rango(A) ≠ rango([A|b]) |
 
 ---
 
@@ -43,23 +68,27 @@ De acuerdo con el texto de Larson, un sistema de ecuaciones lineales puede prese
 
 ### 2.1 Multiplicación de Matrices
 
-Sean A una matriz de tamaño m × n y B una matriz de tamaño n × p. El producto C = AB es una matriz de tamaño m × p donde cada componente cᵢⱼ se calcula mediante el producto punto del renglón i de A y la columna j de B:
+Sean A una matriz de tamaño m × n y B una matriz de tamaño n × p. El producto **C = AB** es una matriz de tamaño m × p donde cada componente cᵢⱼ se calcula mediante el producto punto del renglón i de A y la columna j de B:
 
 ```
-cᵢⱼ = Σ aᵢₖbₖⱼ = aᵢ₁b₁ⱼ + aᵢ₂b₂ⱼ + ⋯ + aᵢₙbₙⱼ
+cᵢⱼ = Σₖ₌₁ⁿ aᵢₖbₖⱼ = aᵢ₁b₁ⱼ + aᵢ₂b₂ⱼ + ⋯ + aᵢₙbₙⱼ
 ```
 
-Es un requisito indispensable para la multiplicación que el número de columnas de la matriz de la izquierda (A) sea exactamente igual al número de renglones de la matriz de la derecha (B).
+> **⚠️ Requisito indispensable:** El número de columnas de la matriz de la izquierda (A) debe ser exactamente igual al número de renglones de la matriz de la derecha (B).
 
 ### 2.2 La Matriz Identidad
 
-La matriz identidad de orden n, denotada como Iₙ, es una matriz cuadrada cuyos elementos de la diagonal principal son iguales a 1 y todos los demás elementos son 0. Formalmente:
+La **matriz identidad** de orden n, denotada como Iₙ, es una matriz cuadrada cuyos elementos de la diagonal principal son iguales a 1 y todos los demás elementos son 0:
 
 ```
-Iₙ = [rᵢⱼ] donde rᵢⱼ = 1 si i = j, 0 si i ≠ j
+     ┌ 1 0 ⋯ 0 ┐
+     │ 0 1 ⋯ 0 │
+Iₙ = │ ⋮ ⋮  ⋱ ⋮ │
+     │ 0 0 ⋯ 1 │
+     └         ┘
 ```
 
-Esta matriz actúa como el elemento neutro multiplicativo en el álgebra matricial. Si A es una matriz de tamaño m × n, entonces se cumple que:
+Esta matriz actúa como el **elemento neutro multiplicativo** en el álgebra matricial:
 
 ```
 AIₙ = A  y  IₘA = A
@@ -69,10 +98,15 @@ AIₙ = A  y  IₘA = A
 
 A diferencia de la aritmética ordinaria de los números reales, el producto de matrices posee restricciones y propiedades algebraicas particulares:
 
-- **No conmutatividad:** En el caso general, el producto de matrices no es conmutativo: AB ≠ BA
-- **Asociatividad:** El producto es asociativo siempre que los tamaños sean compatibles: A(BC) = (AB)C
-- **Propiedades distributivas:** A(B + C) = AB + AC y (A + B)C = AC + BC
-- **Transpuesta de un producto:** (AB)ᵀ = BᵀAᵀ
+| Propiedad | Descripción | Fórmula |
+|-----------|-------------|---------|
+| **No conmutatividad** | En general, AB ≠ BA | AB ≠ BA |
+| **Asociatividad** | El producto es asociativo | A(BC) = (AB)C |
+| **Distributividad izquierda** | Se distribuye respecto a la suma | A(B + C) = AB + AC |
+| **Distributividad derecha** | Se distribuye respecto a la suma | (A + B)C = AC + BC |
+| **Transpuesta de un producto** | La transpuesta del producto | (AB)ᵀ = BᵀAᵀ |
+
+> **Nota importante:** Incluso si ambos productos AB y BA están definidos y producen matrices del mismo tamaño, los resultados numéricos suelen diferir.
 
 ---
 
@@ -80,33 +114,95 @@ A diferencia de la aritmética ordinaria de los números reales, el producto de 
 
 ### 3.1 Eliminación de Gauss-Jordan
 
-Este método consiste en aplicar operaciones elementales de renglón a la matriz aumentada [A | b] para llevarla a su forma escalonada reducida por renglones.
+Este método consiste en aplicar **operaciones elementales de renglón** a la matriz aumentada [A | b] para llevarla a su forma escalonada reducida por renglones.
+
+**Operaciones elementales permitidas:**
+1. Intercambiar dos renglones: Rᵢ ↔ Rⱼ
+2. Multiplicar un renglón por una constante no nula: Rᵢ → kRᵢ
+3. Sumar a un renglón un múltiplo de otro: Rᵢ → Rᵢ + kRⱼ
 
 ### 3.2 Método de la Matriz Inversa
 
-Si A es una matriz cuadrada y det(A) ≠ 0, entonces el sistema Ax = b tiene una solución dada por x = A⁻¹b.
+Si A es una matriz cuadrada y det(A) ≠ 0, entonces el sistema Ax = b tiene una solución dada por:
+
+```
+x = A⁻¹b
+```
+
+**Pasos para calcular A⁻¹:**
+1. Plantear la matriz aumentada conjunta [A | Iₙ]
+2. Aplicar operaciones elementales para transformar el bloque izquierdo en la identidad
+3. El bloque derecho resultante será A⁻¹
 
 ### 3.3 Regla de Cramer
 
-La Regla de Cramer proporciona la solución de Ax = b mediante determinantes: xᵢ = det(Aᵢ)/det(A).
+La **Regla de Cramer** proporciona la solución de Ax = b mediante determinantes:
+
+```
+xᵢ = det(Aᵢ) / det(A)
+```
+
+donde Aᵢ es la matriz A con la columna i reemplazada por el vector b.
+
+> **⚠️ Limitación:** Solo funciona cuando det(A) ≠ 0 (matriz no singular).
 
 ---
 
 ## 4. Ajuste Polinomial de Curvas
 
-El ajuste de curvas consiste en hallar un polinomio de grado n que pase a través de n + 1 puntos de coordenadas distintas en el plano cartesiano.
+### 4.1 Definición
+
+El **ajuste de curvas** consiste en hallar un polinomio de grado n que pase a través de n + 1 puntos de coordenadas distintas en el plano cartesiano.
+
+Dados los puntos (x₀, y₀), (x₁, y₁), ..., (xₙ, yₙ), buscamos un polinomio:
+
+```
+p(x) = a₀ + a₁x + a₂x² + ⋯ + aₙxⁿ
+```
+
+que satisfaga p(xᵢ) = yᵢ para todo i = 0, 1, ..., n.
+
+### 4.2 Sistema de Ecuaciones
+
+Sustituyendo cada punto en el polinomio, obtenemos un sistema de ecuaciones lineales:
+
+```
+a₀ + a₁x₀ + a₂x₀² + ⋯ + aₙx₀ⁿ = y₀
+a₀ + a₁x₁ + a₂x₁² + ⋯ + aₙx₁ⁿ = y₁
+⋮
+a₀ + a₁xₙ + a₂xₙ² + ⋯ + aₙxₙⁿ = yₙ
+```
+
+Este sistema puede resolverse mediante cualquiera de los métodos anteriores (Gauss-Jordan, matriz inversa o Cramer).
 
 ---
 
 ## 5. El Teorema de Cayley-Hamilton
 
-El teorema establece que una matriz cuadrada A satisface su propio polinomio característico p(λ) = det(λI - A) = 0.
+### 5.1 Definición
+
+El **Teorema de Cayley-Hamilton** establece que una matriz cuadrada A satisface su propio polinomio característico.
+
+El **polinomio característico** de A es:
+
+```
+p(λ) = det(λI - A)
+```
+
+### 5.2 Enunciado del Teorema
 
 Toda matriz cuadrada satisface su propia ecuación característica. Es decir, si el polinomio característico de A es p(λ), entonces al sustituir la variable escalar λ por la matriz A (y el término constante c₀ por c₀Iₙ), se obtiene la matriz nula O:
 
 ```
 p(A) = Aⁿ + cₙ₋₁Aⁿ⁻¹ + ⋯ + c₁A + c₀Iₙ = O
 ```
+
+### 5.3 Aplicación
+
+Este teorema es útil para:
+- Calcular potencias altas de matrices
+- Calcular la inversa de una matriz
+- Simplificar expresiones matriciales
 
 ---
 
